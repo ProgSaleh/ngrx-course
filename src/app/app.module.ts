@@ -21,10 +21,12 @@ import { RouterState, StoreRouterConnectingModule } from "@ngrx/router-store";
 import { EffectsModule } from "@ngrx/effects";
 import { EntityDataModule } from "@ngrx/data";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { AuthGuard } from "./auth/auth.guard";
 
 const routes: Routes = [
   {
     path: "courses",
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import("./courses/courses.module").then((m) => m.CoursesModule),
   },
